@@ -1,7 +1,12 @@
 <template>
   <div id="header">
     <Menu theme="light" mode="horizontal" @on-select="handleRoute" :active-name="activeMenu" class="oj-menu">
-      <div class="logo"><span>{{website.website_name}}</span></div>
+      <div class="logo"><span>附属·青藤OJ</span></div>
+      <div class="blog ivu-menu-item">
+        <Icon type="coffee"></Icon>
+        <span> </span>
+        <a style="color: #495060" href="http://47.110.130.231:8000/">博客</a>
+      </div>
       <Menu-item name="/">
         <Icon type="home"></Icon>
         {{$t('m.Home')}}
@@ -148,6 +153,11 @@
       font-size: 20px;
       float: left;
       line-height: 60px;
+    }
+
+    .blog {
+      font-size: 14px;
+      float: left;
     }
 
     .drop-menu {

@@ -86,7 +86,7 @@
             this.btnLoginLoading = false
             this.changeModalStatus({visible: false})
             this.getProfile()
-            this.$success('Welcome back to OJ')
+            this.$success('欢迎回到宁大附属青藤OJ!')
           }, _ => {
             this.btnLoginLoading = false
           })

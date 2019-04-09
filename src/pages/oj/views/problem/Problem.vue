@@ -67,24 +67,24 @@
                 </Tag>
               </template>
               <template v-else-if="this.contestID && !OIContestRealTimePermission">
-                <Alert type="success" show-icon>Submitted successfully</Alert>
+                <Alert type="success" show-icon>提交成功</Alert>
               </template>
             </div>
             <div v-else-if="problem.my_status === 0">
-              <Alert type="success" show-icon>You have solved the problem</Alert>
+              <Alert type="success" show-icon>你已经解决了这道题</Alert>
             </div>
             <div v-else-if="this.contestID && !OIContestRealTimePermission && submissionExists">
-              <Alert type="success" show-icon>You have submitted a solution.</Alert>
+              <Alert type="success" show-icon>你已经提交了一个解决方案.</Alert>
             </div>
             <div v-if="contestEnded">
-              <Alert type="warning" show-icon>Contest has ended</Alert>
+              <Alert type="warning" show-icon>比赛已经结束</Alert>
             </div>
           </Col>
 
           <Col :span="12">
             <template v-if="captchaRequired">
               <div class="captcha-container">
-                <Tooltip v-if="captchaRequired" content="Click to refresh" placement="top">
+                <Tooltip v-if="captchaRequired" content="单击刷新" placement="top">
                   <img :src="captchaSrc" @click="getCaptchaSrc"/>
                 </Tooltip>
                 <Input v-model="captchaCode" class="captcha-code"/>
@@ -93,8 +93,8 @@
             <Button type="warning" icon="edit" :loading="submitting" @click="submitCode"
                     :disabled="problemSubmitDisabled || submitted"
                     class="fl-right">
-              <span v-if="submitting">Submitting</span>
-              <span v-else>Submit</span>
+              <span v-if="submitting">提交中</span>
+              <span v-else>已提交</span>
             </Button>
           </Col>
         </Row>
@@ -117,7 +117,7 @@
 
         <VerticalMenu-item v-if="!this.contestID || OIContestRealTimePermission" :route="submissionRoute">
           <Icon type="navicon-round"></Icon>
-          Submissions
+          提交列表
         </VerticalMenu-item>
 
         <template v-if="this.contestID">
@@ -139,7 +139,7 @@
           <span class="card-title">{{$t('m.Information')}}</span>
         </div>
         <ul>
-          <li><p>ID</p>
+          <li><p>编号</p>
             <p>{{problem._id}}</p></li>
           <li>
             <p>{{$t('m.Time_Limit')}}</p>
@@ -166,7 +166,7 @@
             <p>{{$t('m.Tags')}}</p>
             <p>
               <Poptip trigger="hover" placement="left-end">
-                <a>Show</a>
+                <a>显示</a>
                 <div slot="content">
                   <Tag v-for="tag in problem.tags" :key="tag">{{tag}}</Tag>
                 </div>
@@ -179,7 +179,7 @@
       <Card id="pieChart" :padding="0" v-if="!this.contestID || OIContestRealTimePermission">
         <div slot="title">
           <Icon type="ios-analytics"></Icon>
-          <span class="card-title">Statistic</span>
+          <span class="card-title">统计图</span>
           <Button type="ghost" size="small" id="detail" @click="graphVisible = !graphVisible">Details</Button>
         </div>
         <div class="echarts">
@@ -359,7 +359,7 @@
       },
       onResetToTemplate () {
         this.$Modal.confirm({
-          content: 'Are you sure you want to reset your code?',
+          content: '你确定要重置刷新代码?',
           onOk: () => {
             let template = this.problem.template
             if (template && template[this.language]) {
@@ -395,7 +395,7 @@
       },
       submitCode () {
         if (this.code.trim() === '') {
-          this.$error('Code can not be empty')
+          this.$error('代码不能为空')
           return
         }
         this.submissionId = ''
@@ -419,8 +419,8 @@
             this.submissionExists = true
             if (!detailsVisible) {
               this.$Modal.success({
-                title: 'Success',
-                content: 'Submit code successfully'
+                title: '成功',
+                content: '成功提交代码'
               })
               return
             }
@@ -440,7 +440,7 @@
           if (this.submissionExists) {
             this.$Modal.confirm({
               title: '',
-              content: '<h3>You have submission in this problem, sure to cover it?<h3>',
+              content: '<h3>这个问题你已经提交了，确定要覆盖?<h3>',
               onOk: () => {
                 // 暂时解决对话框与后面提示对话框冲突的问题(否则一闪而过）
                 setTimeout(() => {
@@ -459,10 +459,10 @@
         }
       },
       onCopy (event) {
-        this.$success('Code copied')
+        this.$success('代码已拷贝')
       },
       onCopyError (e) {
-        this.$error('Failed to copy code')
+        this.$error('拷贝代码失败')
       }
     },
     computed: {

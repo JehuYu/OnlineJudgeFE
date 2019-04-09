@@ -1,7 +1,7 @@
 <template>
   <Panel shadow :padding="10">
     <div slot="title">
-      {{title}}
+      通知公告
     </div>
     <div slot="extra">
       <Button v-if="listVisible" type="info" @click="init" :loading="btnLoading">{{$t('m.Refresh')}}</Button>

@@ -66,30 +66,30 @@
     <Form ref="formProfile" :model="formProfile">
       <Row type="flex" :gutter="30" justify="space-around">
         <Col :span="11">
-          <FormItem label="Real Name">
+          <FormItem label="真实姓名">
             <Input v-model="formProfile.real_name"/>
           </FormItem>
-          <Form-item label="School">
+          <Form-item label="学校">
             <Input v-model="formProfile.school"/>
           </Form-item>
-          <Form-item label="Major">
+          <Form-item label="班级">
             <Input v-model="formProfile.major"/>
           </Form-item>
-          <FormItem label="Language">
+          <FormItem label="语言">
             <Select v-model="formProfile.language">
               <Option v-for="lang in languages" :key="lang.value" :value="lang.value">{{lang.label}}</Option>
             </Select>
           </FormItem>
           <Form-item>
-            <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">Save All</Button>
+            <Button type="primary" @click="updateProfile" :loading="loadingSaveBtn">保存所有</Button>
           </Form-item>
         </Col>
 
         <Col :span="11">
-          <Form-item label="Mood">
+          <Form-item label="座右铭">
             <Input v-model="formProfile.mood"/>
           </Form-item>
-          <Form-item label="Blog">
+          <Form-item label="博客">
             <Input v-model="formProfile.blog"/>
           </Form-item>
           <Form-item label="Github">

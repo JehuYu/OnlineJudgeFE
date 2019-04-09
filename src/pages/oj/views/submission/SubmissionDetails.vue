@@ -8,10 +8,10 @@
             <pre>{{submission.statistic_info.err_info}}</pre>
           </template>
           <template v-else>
-            <span>Time: {{submission.statistic_info.time_cost | submissionTime}}</span>
-            <span>Memory: {{submission.statistic_info.memory_cost | submissionMemory}}</span>
-            <span>Lang: {{submission.language}}</span>
-            <span>Author: {{submission.username}}</span>
+            <span>运行时间: {{submission.statistic_info.time_cost | submissionTime}}</span>
+            <span>内存: {{submission.statistic_info.memory_cost | submissionMemory}}</span>
+            <span>语言: {{submission.language}}</span>
+            <span>提交人: {{submission.username}}</span>
           </template>
         </div>
       </Alert>
@@ -49,12 +49,12 @@
 
   const baseColumn = [
     {
-      title: 'ID',
+      title: '编号',
       align: 'center',
       type: 'index'
     },
     {
-      title: 'Status',
+      title: '状态',
       align: 'center',
       render: (h, params) => {
         return h('Tag', {
@@ -65,14 +65,14 @@
       }
     },
     {
-      title: 'Memory',
+      title: '内存',
       align: 'center',
       render: (h, params) => {
         return h('span', utils.submissionMemoryFormat(params.row.memory))
       }
     },
     {
-      title: 'Time',
+      title: '运行时间',
       align: 'center',
       render: (h, params) => {
         return h('span', utils.submissionTimeFormat(params.row.cpu_time))
@@ -80,20 +80,20 @@
     }
   ]
   const scoreColumn = [{
-    title: 'Score',
+    title: '分数',
     align: 'center',
     key: 'score'
   }]
   const adminColumn = [
     {
-      title: 'Real Time',
+      title: '实际时间',
       align: 'center',
       render: (h, params) => {
         return h('span', utils.submissionTimeFormat(params.row.real_time))
       }
     },
     {
-      title: 'Singal',
+      title: '新号',
       align: 'center',
       key: 'signal'
     }

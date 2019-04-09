@@ -21,9 +21,9 @@
               <div v-html="contest.description" class="markdown-body"></div>
               <div v-if="passwordFormVisible" class="contest-password">
                 <Input v-model="contestPassword" type="password"
-                       placeholder="contest password" class="contest-password-input"
+                       placeholder="比赛密码" class="contest-password-input"
                        @on-enter="checkPassword"/>
-                <Button type="info" @click="checkPassword">Enter</Button>
+                <Button type="info" @click="checkPassword">进入</Button>
               </div>
             </Panel>
             <Table :columns="columns" :data="contest_table" disabled-hover style="margin-bottom: 40px;"></Table>
@@ -95,27 +95,27 @@
         contestPassword: '',
         columns: [
           {
-            title: 'StartAt',
+            title: '开始时间',
             render: (h, params) => {
               return h('span', time.utcToLocal(params.row.start_time))
             }
           },
           {
-            title: 'EndAt',
+            title: '结束时间',
             render: (h, params) => {
               return h('span', time.utcToLocal(params.row.end_time))
             }
           },
           {
-            title: 'ContestType',
+            title: '比赛类型',
             key: 'contest_type'
           },
           {
-            title: 'Rule',
+            title: '规则',
             key: 'rule_type'
           },
           {
-            title: 'Creator',
+            title: '创建者',
             render: (h, data) => {
               return h('span', data.row.created_by.username)
             }
